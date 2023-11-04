@@ -10,5 +10,6 @@ class Book(CustomBaseModel):
     __tablename__ = "books"
     name: Mapped[str]
     description: Mapped[str]
-    genres: Mapped[List["Genre"]] = relationship()
     slug: Mapped[str]
+    genres: Mapped[List["Genre"]] = relationship(back_populates="book")
+    editorial: Mapped["Editorial"] = relationship(back_populates="book")

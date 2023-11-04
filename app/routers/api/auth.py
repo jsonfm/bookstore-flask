@@ -1,5 +1,7 @@
 from flask import Blueprint
 
+from app.utils.auth import hash_password
+
 router = Blueprint("auth", __name__, url_prefix="/auth")
 
 

@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime, timedelta
+from typing import Union
 
 # jwt
 from jose import JWTError, jwt
