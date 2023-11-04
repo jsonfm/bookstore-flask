@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS user_roles (
     id SERIAL NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW(),
-    role VARCHAR(100),
+    role VARCHAR(50) UNIQUE NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS users (
     id SERIAL NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW(),
-    email VARCHAR(255),
-    password VARCHAR(255),
-    role_id INTEGER,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role_id INTEGER NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES user_roles(id)
 );

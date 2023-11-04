@@ -11,3 +11,4 @@ class Book(CustomBaseModel):
     name: Mapped[str]
     description: Mapped[str]
     genres: Mapped[List["Genre"]] = relationship()
+    slug: Mapped[str]
