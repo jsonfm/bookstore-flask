@@ -13,7 +13,7 @@ module.exports = {
     themes: [
       {
         'light': {
-           'primary' : '#ff3548',
+           'primary' : '#FF4550',
            'primary-focus' : '#ed1d31',
            'primary-content' : '#ffffff',
 
@@ -40,13 +40,13 @@ module.exports = {
            'error' : '#f41f43',
 
           '--rounded-box': '1rem',          
-          '--rounded-btn': '.5rem',        
+          '--rounded-btn': '2rem',        
           '--rounded-badge': '.5rem',      
 
           '--animation-btn': '.25s',       
           '--animation-input': '.2s',       
 
-          '--btn-text-case': 'capitalize',   
+          '--btn-text-case': 'uppercase',   
           '--navbar-padding': '.5rem',      
           '--border-btn': '1px',            
         },

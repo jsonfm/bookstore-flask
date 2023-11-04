@@ -1,5 +1,25 @@
-<header class="header">
+<header class="header w-full h-14" x-data="{show: false}">
     <nav class="container w-full h-14 flex items-center justify-between">
-        <h4 class="font-bold text-xl">Book<span class="text-primary">io</span></h4>
+        <a href="/" class="font-bold text-xl">Book<span class="text-primary">io</span></a>
+        <div class="flex flex-col md:flex-row items-center gap-4">
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/explore">Explore</a>
+            <a href="/login" class="btn btn-primary">Sign up</a>
+        </div>
+        <div @click="show=!show" class="text-2xl cursor-pointer md:hidden">
+            <template x-if="show">
+                <span class="icon-[mdi--menu]"></span>
+            </template>
+            <template x-if="!show">
+                <span class="icon-[mdi--close]"></span>
+            </template>
+        </div>
     </nav>
 </header>
+
+{% block scripts %} 
+<script>
+    console.log("script");
+</script>
+{% endblock %}
