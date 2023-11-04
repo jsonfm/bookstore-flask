@@ -16,7 +16,7 @@ def get_editorials(limit: int = 30, offset: int = 30):
     return items
 
 
-@router.route("/<editorial_id:int>", methods=["GET"])
+@router.route("/<editorial_id>", methods=["GET"])
 def get_editorial(editorial_id: int):
     item = editorialsService.get_item(editorial_id)
     return item
