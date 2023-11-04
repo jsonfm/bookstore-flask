@@ -1,6 +1,11 @@
 ### 📚 Bookio
 A virtual library.
 
+### 🎨 Inspiration
+- [Bookmania](https://www.behance.net/gallery/138738639/Bookamania-web-design?tracking_source=search_projects|bookstore+web)
+
+- [Concept Online Bookstore](https://www.behance.net/gallery/167449119/Concept-Online-Bookstore?tracking_source=search_projects|bookstore+web)
+
 ### ⛏️ Technologies
 
 - Flask
@@ -19,7 +24,7 @@ A virtual library.
 -   [ ] Genres
 
 
-### 🎨 Styles
+### 💅 Styles
 ```
 npm run tw:watch
 ```

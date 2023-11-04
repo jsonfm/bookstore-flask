@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookio</title>
+    
+    <!-- styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    
+    <!-- alpine -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.2/dist/cdn.min.js"></script>
+</head>
+<body>
+    {%block header %}
+        {% include "layout/default/header.html" %}
+    {% endblock %}
+    <main class="min-h-screen">
+        {% block body %}{% endblock %}
+    </main>
+    {% block footer %}
+        {% include "layout/default/footer.html" %}
+    {% endblock %}
+</body>
+</html>
