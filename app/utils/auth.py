@@ -16,12 +16,12 @@ ALGORITHM = "SHA256"
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-def hash_password(password: str):
-    return pbkdf2_sha256.hash(password)
+def hash_password(plain_password: str):
+    return pwd_context.hash(plain_password)
 
 
-def verify_password(password: str, hashed: str):
-    return pbkdf2_sha256.verify(password, hashed)
+def verify_password(plain_password: str, hashed_password: str):
+    return pwd_context.verify(plain_password, hashed_password)
 
 
 def create_access_token(
