@@ -14,8 +14,10 @@ A virtual library.
 
 - Flask
 - PostgreSQL
+- Pydantic
 - Tailwind
 - Alpine.js
+- Axios
 
 ### 📄 Requirements
 
