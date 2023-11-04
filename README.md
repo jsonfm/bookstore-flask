@@ -11,6 +11,7 @@ A virtual library.
 - Flask
 - PostgreSQL
 - Tailwind
+- Alpine.js
 
 ### 📄 Requirements
 
