@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookio</title>
+    
+    <!-- styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    
+    <!-- alpine -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.2/dist/cdn.min.js"></script>
+
+    <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
+    <!-- scripts -->
+    {% block scripts %}{% endblock %}
+</head>
+<body>
+    <main class="flex z-10" x-data="{
+        showSideBar: false,
+        toggleShowSideBar() {
+            this.showSideBar = !this.showSideBar
+        },
+        linkClassName: 'cursor-pointer hover:scale-105 flex items-center gap-4 px-4 md:px-6 duration-200'
+    }"
+    >
+        <div class="z-[1000] text-white bg-gradient-to-r from-primary to-[#FF426B] fixed md:static h-screen w-2/3 md:w-1/5 max-w-[300px] flex flex-col overflow-y-auto shadow-md duration-200"
+        :class="!showSideBar ? 'left-0': 'left-full'"
+        >
+            <div class="h-[15%] flex justify-center items-center">
+                <a href="/admin" class="text-xl font-bold">Bookio</a>
+            </div>
+            <div class="h-[70%] flex flex-col gap-4 py-6">
+                <a href="/admin/books" :class="linkClassName">
+                    <span class="icon-[streamline--interface-content-book-open-content-books-book-open]"></span>
+                    <span>books</span>
+                </a>
+                <a href="/admin/genres" :class="linkClassName">
+                    <span class="icon-[gridicons--types]"></span>
+                    <span>genres</span>
+                </a>
+                <a href="/admin/editorials" :class="linkClassName">
+                    <span class="icon-[icon-park-outline--editor]"></span>
+                    <span>editorials</span>
+                </a>
+                <a href="/admin/users" :class="linkClassName">
+                    <span class="icon-[ph--user-bold]"></span>
+                    <span>users</span>
+                </a>
+            </div>
+            <div class="h-[15%] px-4 md:px-6 flex flex-col">
+                <div class="flex gap-2">Logout <span class="icon-[tabler--logout]"></span></div>
+            </div>
+            <div 
+                class="md:hidden fixed bottom-12 right-4 btn btn-sm btn-circle" 
+                :class="!showSideBar ? 'btn-primary': 'btn-neutral'"
+                @click="showSideBar=!showSideBar"
+            >
+                <span class="icon-[material-symbols--side-navigation]"></span>
+            </div>
+        </div>
+        <div 
+            class="-z-[10] md:hidden fixed  left-0 w-full h-full bg-black/10 duration-[50]"
+            :class="!showSideBar ? 'top-0': 'top-full'"
+            @click="toggleShowSideBar"
+        ></div>
+        <div class="h-full w-full">
+            {% block body %}{% endblock %}
+        </div>
+    </main>
+</body>
+</html>
