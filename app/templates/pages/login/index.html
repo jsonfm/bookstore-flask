@@ -4,10 +4,10 @@
 {% block footer %}{% endblock %}
 
 {% block body %}
-<section class="bg-base-300 h-screen">
+<section class="bg-base-300 h-screen" x-data="login">
     <div class="container flex items-center justify-center h-full">
         <div class="shadow-xl rounded-2xl overflow-hidden flex h-[80vh] w-full md:h-[500px] md:w-[800px]">
-            <form class="bg-white w-full md:w-1/2 flex flex-col gap-4 items-center justify-center p-8">
+            <form  @submit.prevent="onSubmit" class="bg-white w-full md:w-1/2 flex flex-col gap-4 items-center justify-center p-8">
                 <h4 class="text-2xl font-bold mb-4">Welcome</h4>
 
                 <div class="flex flex-col w-full">
@@ -16,6 +16,7 @@
                         class="custom-input"
                         placeholder="email@example.com"
                         type="email"
+                        x-model="inputs.email"
                     />
                 </div>
                 <div class="flex flex-col w-full" x-data="{showPassword: false}">
@@ -25,6 +26,7 @@
                             class="bg-transparent w-full outline-none"
                             placeholder="********"
                             :type="showPassword ? 'text': 'password'"
+                            x-model="inputs.password"
                         />
                         <div class="flex items-center text-xl" @click="showPassword=!showPassword">
                             <template x-if="!showPassword">
@@ -36,9 +38,9 @@
                         </div>
                     </div>
                 </div>
-                <a href="/" class="btn btn-primary mt-4">
+                <button class="btn btn-primary mt-4">
                     Log in
-                </a>
+                </button>
                 <div class="flex flex-col items-center gap-1 mt-4">
                     <a class="font-semibold">Forgot your password?</a>
                     <a>New for here. <span class="font-semibold text-primary">Create an account</span></a>
@@ -53,5 +55,30 @@
         </div>
     </div>
 </section>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    Alpine?.data("login", () => ({
+        inputs: {
+            email: '',
+            password: '',
+        },
+        loading: false,
+        async onSubmit() {
+            this.loading = true;
+            try {
+                const body = this.inputs;
+                const response = await axios.post(`/api/v1/auth/login`, body);
+                console.log("response: ", response);
+            }catch(error){
+                console.log(error);
+            }
+            this.loading = false;
+        }
+    }));
+</script>
 
 {% endblock %}
