@@ -18,7 +18,7 @@ class CommonFields(Base):
     id: Mapped[intpk]
     created_at: Mapped[timestamp]
     updated_at: Mapped[timestamp_update]
-    visible: Mapped[bool] = True
+    active: Mapped[bool] = True
     deleted: Mapped[bool] = True
 
 
