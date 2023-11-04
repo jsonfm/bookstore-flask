@@ -11,3 +11,13 @@ router = Blueprint(
 @router.route("/", methods=["GET"])
 def home():
     return render_template("/pages/admin/index.html")
+
+
+@router.route("/books", methods=["GET"])
+def books():
+    return render_template("/pages/admin/books/index.html")
+
+
+@router.route("/books/create", methods=["GET"])
+def create_book():
+    return render_template("/pages/admin/books/create.html")

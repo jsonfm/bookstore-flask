@@ -1,0 +1,47 @@
+{% extends "layout/admin.html" %}
+
+{% block body %}
+
+<div class="container py-4">
+    <div>
+        <a href="/admin/books/create" class="btn btn-sm btn-primary">
+            Create
+        </a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="table">
+            <!-- head -->
+            <thead>
+            <tr>
+                <th></th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Genres</th>
+                <th>Editorial</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template x-for="i in [1,2,3,4,5,6]">
+                <tr>
+                    <th>1</th>
+                    <td>book name</td>
+                    <td>author name</td>
+                    <td>genre book</td>
+                    <td>editorial</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm">
+                            <span class="icon-[basil--edit-outline]"></span>
+                        </button>
+                        <button class="btn btn-primary btn-sm">
+                            <span class="icon-[fluent--delete-12-filled]"></span>
+                        </button>
+                    </td>
+                </tr>
+            </template>
+            </tbody>
+        </table>
+        </div>
+</div>
+
+{% endblock %}
