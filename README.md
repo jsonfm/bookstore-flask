@@ -1,3 +1,7 @@
+<img
+    src="./docs/images/login.png"
+/>
+
 ### 📚 Bookio
 A virtual library.
 
