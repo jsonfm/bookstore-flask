@@ -33,7 +33,7 @@ def create_editorial(body: CreateEditorialForm):
     return item
 
 
-@router.route("/<editorial_id>", methods=["PUT"])
+@router.route("/<int:editorial_id>", methods=["PUT"])
 @validate()
 def update_editorial(editorial_id: int, body: UpdateEditorialForm):
     item = editorialsService.update(editorial_id, body.dict())

@@ -32,3 +32,8 @@ def editorials():
 @router.route("/editorials/create", methods=["GET"])
 def create_editorial():
     return render_template("/pages/admin/editorials/create.html")
+
+
+@router.route("/editorials/edit/<editorial_id>", methods=["GET"])
+def edit_editorial(editorial_id: int):
+    return render_template("/pages/admin/editorials/edit.html")
