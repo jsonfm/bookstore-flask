@@ -9,6 +9,9 @@ class CRUD:
         """Returns a list of items"""
         with db.session() as session:
             result = session.query(cls).limit(limit).offset(offset).all()
+            result = [
+                item.to_dict() if hasattr(item, "to_dict") else item for item in result
+            ]
             return result
 
     @classmethod
@@ -16,6 +19,7 @@ class CRUD:
         """Returns an item given its ID."""
         with db.session() as session:
             result = session.query(cls).filter_by(id=item_id).first()
+            result = result.to_dict() if hasattr(result, "to_dict") else result or {}
             return result
 
     @classmethod
@@ -52,7 +56,10 @@ class CRUD:
             instance = cls(**data)
             session.add(instance)
             session.commit()
-            return instance
+            result = (
+                instance.to_dict() if hasattr(instance, "to_dict") else instance or {}
+            )
+            return result
 
     def create_instance(self):
         """Saves current instance to database."""

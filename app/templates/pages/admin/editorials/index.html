@@ -1,0 +1,63 @@
+{% extends "layout/admin.html" %}
+
+{% block body %}
+
+<div class="container py-4" x-data="data" x-init="getEditorials">
+    <div>
+        <a href="/admin/editorials/create" class="btn btn-sm btn-primary">
+            Create
+        </a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="table">
+            <!-- head -->   
+            <thead>
+            <tr>
+                <th></th>
+                <th>Editorial Name</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template x-for="i in [1,2,3,4,5,6]">
+                <tr>
+                    <th>1</th>
+                    <td>editorial name</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm">
+                            <span class="icon-[basil--edit-outline]"></span>
+                        </button>
+                        <button class="btn btn-primary btn-sm">
+                            <span class="icon-[fluent--delete-12-filled]"></span>
+                        </button>
+                    </td>
+                </tr>
+            </template>
+            </tbody>
+        </table>
+        </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    Alpine?.data("data", () => ({
+        editorials: [],
+        loading: true,
+        async getEditorials(){
+            <!-- return; -->
+            this.loading = true;
+            try{
+                const response = await axios.get(`/api/v1/editorials`);
+                console.log("response: ", response);
+            }
+            catch(error){
+                console.log("error: ", error);
+            }
+            
+            this.loading = false;
+        }
+    }));
+</script>
+{% endblock %}

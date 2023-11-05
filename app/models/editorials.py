@@ -8,4 +8,4 @@ class Editorial(CustomBaseModel):
     __tablename__ = "editorials"
     name: Mapped[str]
     description: Mapped[str]
-    book: Mapped["Book"] = relationship("editorial")
+    # book: Mapped["Book"] = relationship("editorial")

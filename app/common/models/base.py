@@ -1,5 +1,6 @@
 # sqlalchemy
 from sqlalchemy.orm import Mapped
+from sqlalchemy_serializer import SerializerMixin
 
 # crud
 from app.common.models.crud import CRUD
@@ -11,10 +12,11 @@ from app.common.types.sqlalchemy import intpk, timestamp, timestamp_update
 from app.db import Base
 
 
-class CommonFields(Base):
+class CommonFields(Base, SerializerMixin):
     """Common Fields for an SQLAlchemy Model."""
 
     __abstract__ = True
+
     id: Mapped[intpk]
     created_at: Mapped[timestamp]
     updated_at: Mapped[timestamp_update]
